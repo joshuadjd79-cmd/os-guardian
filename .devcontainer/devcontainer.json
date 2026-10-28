@@ -1,0 +1,29 @@
+{
+  "name": "OS Guardian Simulator",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "forwardPorts": [8000, 5173],
+  "portsAttributes": {
+    "5173": {
+      "label": "OS Guardian Frontend Dashboard",
+      "onAutoForward": "openBrowser"
+    },
+    "8000": {
+      "label": "OS Guardian Backend API",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "chmod +x scripts/run_linux.sh && pip install -r backend/requirements.txt && cd frontend && npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  }
+}

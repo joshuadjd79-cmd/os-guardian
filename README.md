@@ -1,5 +1,11 @@
 # OS Guardian — An Explainable, Self-Healing Operating System Simulator
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/joshuadjd79-cmd/os-guardian)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688)](https://fastapi.tiangolo.com/)
+[![React: 18](https://img.shields.io/badge/Frontend-React%2018%20%7C%20TypeScript-61DAFB)](https://react.dev/)
+
 > **Operating Systems Course Capstone Project**  
 > *A desktop-browser-accessible web simulator demonstrating autonomous anomaly surveillance, explainable recovery scoring, and verified self-healing process scheduling.*
 
@@ -90,17 +96,33 @@ Centrally implemented in `backend/app/monitoring/metrics.py` and validated by ha
 
 ## 6. Installation & Launch Experience
 
-### Prerequisites
+### Option A: 1-Click Cloud Launch via GitHub Codespaces (Directly in Browser)
+
+You can launch and interact with the full working model directly in any web browser without installing anything locally:
+
+1. Click the badge: **[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/joshuadjd79-cmd/os-guardian)** (or click `<> Code` &rarr; `Codespaces` &rarr; `Create codespace on main`).
+2. GitHub will provision a cloud Linux environment and automatically install all Python & Node.js dependencies.
+3. In the Codespaces terminal, run:
+   ```bash
+   ./scripts/run_linux.sh
+   ```
+4. GitHub Codespaces will detect port 5173 and automatically open the **OS Guardian Simulator UI** in your browser!
+
+---
+
+### Option B: Local Windows Setup & Launch
+
+#### Prerequisites
 - Python 3.10 or higher installed and on system PATH
 - Node.js v18 or higher installed and on system PATH
 
-### One-Click Windows Setup
+#### One-Click Windows Setup
 Open PowerShell in the project root:
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\setup_windows.ps1
 ```
 
-### Running the Application
+#### Running the Application Locally
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\run_windows.ps1
 ```
@@ -109,7 +131,7 @@ The application will launch and provide:
 - **Backend API:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
 - **Swagger Documentation:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-### Stopping the Application
+#### Stopping the Application
 Close the opened console windows or run:
 ```powershell
 Get-Process python, node -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*uvicorn*" -or $_.CommandLine -like "*vite*" } | Stop-Process -Force
